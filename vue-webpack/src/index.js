@@ -26,5 +26,4 @@ const vm = new Vue({
                         <div v-show="index===3">科技</div>
                     </div>
                 </div>`,
-
 });
