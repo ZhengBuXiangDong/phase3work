@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>更改字体颜色</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        span {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <input type="text" id="tex" @input="input($event)">
+        <p v-cloak v-html="newhtml"></p>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var html = '如果你是星星我就是月亮，请你接受我的光亮，珍妮珍妮我爱你'
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            newhtml: html
+        },
+        methods: {
+            input(e) {
+                // console.log(e.target.value);
+                let keyword = e.target.value; //获取关键字
+                var reg = new RegExp(keyword, 'ig'); //正则
+                let str = `<span>${e.target.value}</span>`; //替换
+                this.newhtml = html.replace(reg, str);
+            }
+        }
+    });
+</script>
+
+</html>

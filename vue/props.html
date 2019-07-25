@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饿了么</title>
+    <link rel="stylesheet" href="./style/hungry.css">
+</head>
+
+<body>
+    <div style="color:#fff">点击换头</div>
+    <div id="areYouHungry">
+        <!-- <header class="h1">
+            <p>未能获取地址</p>
+            <div>
+                <input type="text" placeholder="搜索饿了么商家、商品名称">
+            </div>
+        </header>
+        <header class="h2">
+            <p>选择收货地址</p>
+            <div>
+                选择...<input type="text" placeholder="请输入地址">
+            </div>
+        </header>
+    </div> -->
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // 定义一个新组件
+    Vue.component('e-header', {
+        props: ['html'],
+        template: `
+                    <header v-html="html"></header>
+                  `
+    });
+    let newHtml = `
+                    <p>选择收货地址</p>
+                    <div>
+                        选择...<input type="text" placeholder="请输入地址">
+                    </div>
+                    `;
+    //构建实例
+    const vm = new Vue({
+        el: '#areYouHungry',
+        data: {
+            classname: "h1",
+            html: `<p>未能获取地址</p>
+                    <div>
+                        <input type="text" placeholder="搜索饿了么商家、商品名称">
+                    </div>`,
+        },
+        template: ` <div @click="change">
+                        <e-header :class="classname" :html="html"></e-header>
+                    </div>
+                 `,
+        methods: {
+            change() {
+                this.html = newHtml;
+                this.classname = 'h2';
+            }
+        }
+    })
+</script>
+
+</html>
