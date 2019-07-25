@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饿了么</title>
+    <link rel="stylesheet" href="./style/hungry.css">
+    <style>
+        body>div {
+            width: 500px;
+        }
+
+        span {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var tex =
+        ' 对于需要使用输入法 (如中文、日文、韩文等) 的语言，你会发现 v-model 不会在输入法组合文字过程中得到更新。如果你也想处理这个过程，请使用 input 事件';
+    // var tex = 'hello';
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            message: '',
+            text: tex
+        },
+        template: `<div>
+                        <input v-model="message" placeholder="edit me">
+                        <p v-html="findKey"></p>
+                   </div>   `,
+        computed: {
+            findKey: function () {
+                var reg = new RegExp(this.message, 'ig'); //正则
+                let str = `<span>${this.message}</span>`; //替换
+                this.text = tex.replace(reg, str);
+                return this.text;
+            }
+        }
+    })
+</script>
+
+</html>
