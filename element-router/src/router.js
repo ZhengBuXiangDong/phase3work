@@ -6,6 +6,7 @@ import Index from './views/Index.vue'
 import Dingdan from './views/Dingdan.vue'
 import Faxian from './views/Faxian.vue'
 import Wode from './views/Wode.vue'
+import Addr from './views/Addr.vue'
 
 Vue.use(Router)
 
@@ -29,6 +30,13 @@ export default new Router({
         path: '/wode',
         name: 'wode',
         component: Wode,
+      }, {
+        path: '/addr',
+        name: 'addr',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: Addr,
       }]
     },
     {
